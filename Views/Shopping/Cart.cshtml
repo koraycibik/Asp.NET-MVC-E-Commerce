@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Sepetiniz";
+}
+
+<h2>Sepetiniz</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sepetten Çıkar</th>
+                            <th>Ürün Görseli</th>
+                            <th>Ürün Adı</th>
+                            <th>Ürün Fiyatı</th>
+                            <th>Ürün Miktarı</th>
+                            <th>Ürünü Takip Et</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            decimal totalAmount = 0;
+                            foreach (var item in TempData["OrderDetail"] as IEnumerable<MVCeCommerce.Models.OrderDetail>)
+                            {
+                                totalAmount += (decimal)item.TotalAmount;
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("RemoveFromCart", new { id = item.ProductID })"><span class="glyphicon glyphicon-remove" style="color:red;font-size:x-large"></span></a>
+                                    </td>
+                                    <td>
+                                        <img src="@Url.Content(item.Product.ImageUrl)" alt="@Url.Content(item.Product.AltText)" style="height:150px;" class="img-thumbnail" />
+                                    </td>
+                                    <td>
+                                        <p>@item.Product.Name</p>
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:C2}", item.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @item.Quantity&nbsp;@item.Product.QuantityPerUnit
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("AddToWishlistFromCart", new { id = item.ProductID })"><span class="glyphicon glyphicon-heart-empty" style="color:darkorange;font-size:x-large;font-weight:bold;"></span></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <p class="text-right" style="font-weight:bold;">Toplam Ödenmesi Gereken Tutar: @string.Format("{0:C2}", totalAmount)</p>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="pull-right">
+                @Html.ActionLink("Siparişi Onayla", "CompleteOrder", "Shopping", new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+</div>

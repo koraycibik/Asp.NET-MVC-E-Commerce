@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Ürün Detayı";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        @{ 
+            var item = TempData["ProductDetail"] as MVCeCommerce.Models.Product;
+            
+            <div class="col-md-6">
+                <div style="text-align:center;">
+                    <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" class="img-thumbnail img-responsive" style="height:500px;"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>@item.Name</h3>
+                @for (int i = 0; i < 5; i++)
+                {
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                }
+
+                <br />
+                <br />
+
+                <p class="lead"><b>Fiyatı: </b>@string.Format("{0:C2}", item.UnitPrice)</p>
+                <p>
+                    <span style="background-color:black;color:white;"><b>Stok Miktarı: </b>@item.UnitsInStock&nbsp;@item.QuantityPerUnit</span>
+                </p>
+                <p>
+                    <b>Miktarı: </b>
+                    <input type="number" min="1" max="@item.UnitsInStock" value="1"/>
+                </p>
+
+                <br />
+
+                <a href="@Url.Action("AddToCart", "Shopping", new { id = item.ProductID })" class="btn btn-success">Sepete Ekle</a>
+                <a href="@Url.Action("AddToWishlist", "Shopping", new { id = item.ProductID })" class="btn btn-warning">İstek Listesine Ekle</a>
+
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="#description" data-toggle="tab">Açıklaması</a>
+                </li>
+                <li>
+                    <a href="#reviews" data-toggle="tab">Yorumları</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="description" style="margin-top:30px;">
+                    @Html.Raw(item.LongDescription)
+                </div>
+                <div class="tab-pane fade" style="margin-top:30px;" id="reviews">
+                    <ul>
+                        @{ 
+                            foreach (var review in ViewData["Reviews"] as IEnumerable<MVCeCommerce.Models.Review>)
+                            {
+                                <li>
+                                    <p><b>@review.Name</b></p>
+                                    <p>@review.Review1</p>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            @if(Session["Kullanici"] != null)
+            {
+                <h4>Yorum Ekle</h4>
+                <hr />
+                using(Html.BeginForm("AddReview", "Product", new { id = item.ProductID }, FormMethod.Post))
+                {
+                    <p>Ürünü Oyla: </p>
+                    <input type="number" min="1" max="5" value="5" name="Rate" class="form-control" />
+                    <br />
+                    <p>Adınız: </p>
+                    <input type="text" required name="Name" class="form-control"/>
+                    <br />
+                    <p>Yorumunuz: </p>
+                    <textarea name="Review" rows="3" class="form-control"></textarea>
+                    <br />
+                    <input type="submit" value="Onayla" class="btn btn-info" />
+                }
+            }
+        </div>
+    </div>
+</div>

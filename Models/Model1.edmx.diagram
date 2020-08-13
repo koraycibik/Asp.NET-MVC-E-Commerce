@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="afd9a71948b14fa992e7165a3f551671" Name="Diagram1">
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.AdminEmployee" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.AdminLogin" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Category" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Customer" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.MainSlider" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.OrderDetail" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Order" Width="1.5" PointX="12.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Payment" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.PaymentType" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Product" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.PromoRight" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.RecentlyView" Width="1.5" PointX="10.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Review" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Role" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.ShippingDetail" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.SubCategory" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Supplier" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCeCommerceDbDuyguModel.Wishlist" Width="1.5" PointX="10.5" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_AdminLogins_AdminEmployees" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_AdminLogins_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_PromoRights_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_SubCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_OrderDetails_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_RecentlyViews_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Reviews_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Wishlists_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Orders_OrderDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Orders_Payments" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Orders_ShippingDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Payments_PaymentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Products_SubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Products_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_RecentlyViews_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Reviews_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCeCommerceDbDuyguModel.FK_Wishlists_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Kayıt Olma Ekranı";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+            {
+                <label>İsim: </label>
+                <input type="text" name="FirstName" required placeholder="Adınızı giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Soyisim: </label>
+                <input type="text" name="LastName" required placeholder="Soyadınızı giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Kullanıcı Adı: </label>
+                <input type="text" name="UserName" required placeholder="Kullanıcı adınızı giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Şifre: </label>
+                <input type="password" name="Password" required placeholder="Şifrenizi giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Yaş: </label>
+                <input type="text" name="Age" placeholder="Yaşınızı giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Cinsiyet: </label>
+                <input type="text" name="Gender" placeholder="Cinsiyetinizi giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Doğum Tarihi: </label>
+                <input type="text" name="Birthdate" placeholder="Doğum tarihinizi giriniz..." class="form-control" />
+
+                <br />
+
+                <label>E-mail: </label>
+                <input type="text" name="Email" required placeholder="E-mail adresinizi giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Cep Telefonu: </label>
+                <input type="text" name="Mobile1" placeholder="Cep telefonunuzu giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Adres: </label>
+                <textarea name="Address1" rows="5" placeholder="Adresinizi giriniz..." class="form-control"></textarea>
+
+                <br />
+
+                <button type="submit" class="btn btn-primary">Onayla</button>
+            }
+        </div>
+    </div>
+</div>

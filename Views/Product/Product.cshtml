@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Ürünler";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        @{ 
+            foreach (var item in TempData["ProductList"] as IEnumerable<MVCeCommerce.Models.Product>)
+            {
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
+                        <div class="caption">
+                            <h4 style="height:50px;">@item.Name</h4>
+                            <h3>Fiyatı: @string.Format("{0:C2}", item.UnitPrice)</h3>
+                            <p style="height:100px;overflow:auto">@item.ShortDescription</p>
+                            <p>
+                                @Html.ActionLink("Ürün Detayı", "ProductDetail", new { id = item.ProductID }, new { @class="btn btn-info" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Giriş Ekranı";
+}
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12">
+            @using(Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                <label>Kullanıcı Adı: </label>
+                <input type="text" name="UserName" required placeholder="Kullanıcı adını giriniz..." class="form-control" />
+
+                <br />
+
+                <label>Şifre: </label>
+                <input type="password" name="Password" required placeholder="Şifrenizi giriniz..." class="form-control" />
+
+                <br />
+
+                <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@using MVCeCommerce.Models;
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @{
+            MVCeCommerceDbDuyguEntities db = new MVCeCommerceDbDuyguEntities();
+
+            if (Session["Kullanici"] != null)
+            {
+                <li>
+                    <a href="@Url.Action("Cart", "Shopping")"><span class="glyphicon glyphicon-shopping-cart badge">&nbsp;Sepetim @db.OrderDetails.Where(x => x.CustomerID == TemporaryUserData.UserID && x.isActive == true).ToList().Count</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Wishlist", "Shopping")"><span class="glyphicon glyphicon-heart-empty badge">&nbsp;İstekler @db.Wishlists.Where(x => x.CustomerID == TemporaryUserData.UserID).ToList().Count</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Profile")"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;@Session["Kullanici"]</a>
+                </li>
+                <li>
+                    @Html.ActionLink("Çıkış Yap", "Logout", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Kayıt Ol", "Register", "Login", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Giriş Yap", "Login", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            }
+        }
+    </ul>
+            }

@@ -1,0 +1,77 @@
+﻿@model MVCeCommerce.Models.Customer
+
+@{
+    ViewBag.Title = "Profil Düzenleme Ekranı";
+}
+
+<h2>Profil Düzenleme Ekranı</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-6 col-md-offset-3">
+            @{
+                using (Html.BeginForm("Index", "Profile", FormMethod.Post))
+                {
+                    <label>İsim: </label>
+                    @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                    <br />
+                    <label>Soyisim: </label>
+                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                    <br />
+                    <label>Kullanıcı Adı: </label>
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @disabled = true })
+                    <br />
+                    <label>Şifre: </label>
+                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                    <br />
+                    <label>Şifre Tekrar: </label>
+                    <input type="text" name="PasswordAgain" class="form-control" />
+                    <br />
+                    <label>Yaş: </label>
+                    @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                    <br />
+                    <label>Cinsiyet: </label>
+                    @Html.TextBoxFor(x => x.Gender, new { @class = "form-control" })
+                    <br />
+                    <label>Doğum Tarihi: </label>
+                    @Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control" })
+                    <br />
+                    <label>Şirket: </label>
+                    @Html.TextBoxFor(x => x.Organization, new { @class = "form-control" })
+                    <br />
+                    <label>Ülke: </label>
+                    @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                    <br />
+                    <label>Bölge: </label>
+                    @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+                    <br />
+                    <label>Şehir: </label>
+                    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                    <br />
+                    <label>Posta Kodu: </label>
+                    @Html.TextBoxFor(x => x.PostalCode, new { @class = "form-control" })
+                    <br />
+                    <label>E-mail: </label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                    <br />
+                    <label>Alternatif E-mail: </label>
+                    @Html.TextBoxFor(x => x.AltEmail, new { @class = "form-control" })
+                    <br />
+                    <label>Telefon: </label>
+                    @Html.TextBoxFor(x => x.Phone1, new { @class = "form-control" })
+                    <br />
+                    <label>Cep Telefonu: </label>
+                    @Html.TextBoxFor(x => x.Mobile1, new { @class = "form-control" })
+                    <br />
+                    <label>Adres 1: </label>
+                    @Html.TextAreaFor(x => x.Address1, new { @class = "form-control" })
+                    <br />
+                    <label>Adres 2: </label>
+                    @Html.TextAreaFor(x => x.Address2, new { @class = "form-control" })
+                    <br />
+                    <input type="submit" value="ONAYLA" class="btn btn-primary" />
+                }
+            }
+        </div>
+    </div>
+</div>

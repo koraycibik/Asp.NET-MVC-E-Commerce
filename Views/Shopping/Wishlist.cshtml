@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "İstek Listesi";
+}
+
+<h2>İstek Listeniz</h2>
+
+<div class="container">
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Listeden Çıkar</th>
+                            <th>Ürün Görseli</th>
+                            <th>Ürün Adı</th>
+                            <th>Ürün Fiyatı</th>
+                            <th>Stok Miktarı</th>
+                            <th>Sepete Ekle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in TempData["Wishlist"] as IEnumerable<MVCeCommerce.Models.Wishlist>)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("RemoveFromWishlist", new { id = item.ProductID })"><span class="glyphicon glyphicon-trash" style="color:red;font-size:x-large"></span></a>
+                                    </td>
+                                    <td>
+                                        <img src="@Url.Content(item.Product.ImageUrl)" alt="@Url.Content(item.Product.AltText)" style="height:150px;" class="img-thumbnail" />
+                                    </td>
+                                    <td>
+                                        <p>
+                                            @item.Product.Name
+                                        </p>
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:C2}", item.Product.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @item.Product.UnitsInStock&nbsp;@item.Product.QuantityPerUnit
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("AddToCartFromWishlist", new { id = item.ProductID })"><span class="glyphicon glyphicon-shopping-cart" style="color:darkorange;font-size:x-large;"></span></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
